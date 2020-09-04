@@ -175,10 +175,11 @@ public class EncodableImage implements Encodable {
 
     public void write(int x, int y, boolean isBlack) {
         Color color = isBlack ? BLACK : WHITE;
-        if (x < width || y < height) {
-            System.err.println("index out of bounds for some reason");
-        } else
+        try {
             bytes[x][y] = color;
+        }catch (ArrayIndexOutOfBoundsException e){
+            System.err.println(e.getMessage());
+        }
     }
 
     @Override
