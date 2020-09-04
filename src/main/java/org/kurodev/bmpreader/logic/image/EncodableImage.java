@@ -105,7 +105,7 @@ public class EncodableImage implements Encodable {
         ByteWriter writer = new ByteWriter(ous);
         for (int x = 0, bytesLength = bytes.length; x < bytesLength; x++) {
             for (int y = 0; y < bytes[x].length; y++) {
-                if (bytes[x][y] == WHITE) {
+                if (WHITE.equals(bytes[x][y])) {
                     writer.writeZero();
                 } else {
                     writer.writeOne();

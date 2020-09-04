@@ -42,6 +42,11 @@ public class EncodableImageTest {
     @Test
     public void toImageAndFromImageTest() {
         EncodableImage a = new EncodableImage(53, new Random().nextInt(21516));
+        for (int x = 0; x < a.getWidth(); x++) {
+            for (int y = 0; y < a.getHeight(); y++) {
+                a.write(x, y, new Random().nextBoolean());
+            }
+        }
         EncodableImage b = new EncodableImage(a.toImage());
         assertEquals(a, b);
     }

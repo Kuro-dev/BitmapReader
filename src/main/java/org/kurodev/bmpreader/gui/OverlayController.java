@@ -92,8 +92,8 @@ public class OverlayController implements Initializable {
     private void setImage(EncodableImage img) {
         progressBar.setAccessibleText("Test");
         System.out.println("Loading image");
-        ImageLoader loader = new ImageLoader(img, image, progressLabel, progressBar);
         this.img.copy(img);
+        ImageLoader loader = new ImageLoader(img, image, progressLabel, progressBar);
         Thread thread = new Thread(loader, "ImageLoading thread");
         image.setHeight(img.getHeight());
         image.setWidth(img.getWidth());
@@ -102,7 +102,7 @@ public class OverlayController implements Initializable {
     }
 
     @FXML
-     void menuNew_OnAction() {
+    void menuNew_OnAction() {
         Pattern syntax = Pattern.compile("\\d+\\s*[xX]\\s*\\d+");
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Create new BitMap");
@@ -132,8 +132,10 @@ public class OverlayController implements Initializable {
     }
 
     @FXML
-     void menuSave_OnAction() throws IOException {
+    void menuSave_OnAction() throws IOException {
         FileChooser chooser = createChooser();
+        chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Bitmap kurostyle", ".kbp"));
+        chooser.setSelectedExtensionFilter(chooser.getExtensionFilters().get(0));
         WritableImage writableImage = new WritableImage((int) image.getWidth(), (int) image.getHeight());
         image.snapshot(new SnapshotParameters(), writableImage);
         img.decode(writableImage);
@@ -144,7 +146,7 @@ public class OverlayController implements Initializable {
     }
 
     @FXML
-     void menuOpen_OnAction() throws IOException {
+    void menuOpen_OnAction() throws IOException {
         FileChooser chooser = createChooser();
         chooser.setTitle("Open");
         File p = chooser.showOpenDialog(Main.getStage());
