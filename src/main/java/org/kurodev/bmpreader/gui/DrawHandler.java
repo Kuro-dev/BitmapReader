@@ -31,7 +31,7 @@ public class DrawHandler implements EventHandler<MouseEvent> {
         if (event.isPrimaryButtonDown()) {
             if (event.getTarget() == image) {
                 int x = (int) event.getSceneX(), y = (int) event.getSceneY();
-                System.out.printf("x:%d, y:%d\n", x, y);
+//                System.out.printf("x:%d, y:%d\n", x, y);
                 boolean selected = colourButton.isSelected();
                 draw(x, y, selected);
             }
@@ -39,7 +39,7 @@ public class DrawHandler implements EventHandler<MouseEvent> {
     }
 
     private void draw(int x, int y, boolean black) {
-        if (x < img.getWidth() || y < img.getHeight()) {
+        if (x < img.getWidth() || y < img.getHeight() || x < 0 || y < 0) {
             img.write(x, y, black);
             Color fill = black ? Color.BLACK : Color.WHITE;
             image.getGraphicsContext2D().setFill(fill);

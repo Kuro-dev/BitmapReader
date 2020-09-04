@@ -93,7 +93,7 @@ public class OverlayController implements Initializable {
         progressBar.setAccessibleText("Test");
         System.out.println("Loading image");
         ImageLoader loader = new ImageLoader(img, image, progressLabel, progressBar);
-        img.copy(img);
+        this.img.copy(img);
         Thread thread = new Thread(loader, "ImageLoading thread");
         image.setHeight(img.getHeight());
         image.setWidth(img.getWidth());
