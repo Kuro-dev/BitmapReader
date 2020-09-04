@@ -194,7 +194,7 @@ public class EncodableImage implements Encodable {
         this.width = img.width;
         this.height = img.height;
         if (img.bytes.length != width || img.bytes[0].length != height) {
-            throw new RuntimeException(String.format("WHAT THE FUCK DUDE\nExpected: x:%d,y:%d\nActual: x:%d,y:%d"
+            throw new RuntimeException(String.format("WHAT THE FUCK DUDE\nExpected: x:%d,y:%d\nActual: x:%d,y:%d\n"
                     , width, height, img.bytes.length, img.bytes[0].length));
         }
         this.bytes = img.bytes;
